@@ -1,4 +1,4 @@
-# yarn-workspaces-eslint-lefthook-template
+# yarn-workspaces-eslint-cspell-commitlint-lefthook-template
 
 ## Features
 

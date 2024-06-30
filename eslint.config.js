@@ -1,3 +1,5 @@
+// eslint-disable-next-line @cspell/spellchecker
+// @ts-nocheck
 import 'eslint-plugin-only-warn';
 import cspell from '@cspell/eslint-plugin/recommended';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
@@ -67,6 +69,8 @@ export default tsLint.config(
     rules: {
       'jsonc/sort-keys': 'off',
       'jsonc/object-curly-spacing': 'off',
+      'jsonc/array-element-newline': 'off',
+      'jsonc/array-bracket-newline': 'off',
     },
   },
 

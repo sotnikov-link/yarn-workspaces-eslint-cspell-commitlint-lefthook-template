@@ -1,0 +1,5 @@
+{
+  "name": "@some-name/tsconfig",
+  "packageManager": "yarn@4.3.1",
+  "private": true
+}

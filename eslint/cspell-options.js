@@ -1,5 +1,5 @@
 /**
- * @type {import('@cspell/eslint-plugin').Options}
+ * @type {Partial<import('@cspell/eslint-plugin').Options>}
  */
 export const cspellOptions = {
   cspell: {

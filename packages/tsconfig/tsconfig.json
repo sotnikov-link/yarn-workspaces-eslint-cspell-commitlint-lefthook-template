@@ -1,0 +1,57 @@
+/* eslint-disable jsonc/no-comments */
+{
+  // Based on:
+  // https://github.com/bitjson/typescript-starter/blob/v3.1.2/tsconfig.json
+  "compileOnSave": false,
+  "compilerOptions": {
+    "incremental": true,
+    "target": "ESNext",
+    "lib": ["dom", "dom.iterable", "esnext"], // as next and cra
+
+    // https://github.com/microsoft/TypeScript/issues/49083#issuecomment-1435399267
+    "moduleResolution": "Bundler",
+
+    "module": "ESNext",
+    // Declaration requires "export" for types:
+    // https://github.com/microsoft/TypeScript/issues/6307
+    "declaration": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "jsx": "react-jsx",
+
+    /* Strict Type-Checking Options */
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+
+    /* Additional Checks */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    /* Debugging Options */
+    "traceResolution": false,
+    "listEmittedFiles": false,
+    "listFiles": false,
+    "pretty": true,
+
+    /* Own Options */
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "declarationMap": true,
+    "removeComments": false,
+    "preserveWatchOutput": true,
+    "isolatedModules": true,
+    "exactOptionalPropertyTypes": false,
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "verbatimModuleSyntax": true
+  }
+}

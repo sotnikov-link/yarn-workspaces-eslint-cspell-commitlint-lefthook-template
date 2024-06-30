@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://json.schemastore.org/lefthook.json
+
+# https://github.com/evilmartians/lefthook/tree/v1.5.0/examples/commitlint
+commit-msg:
+  commands:
+    commitlint:
+      run: yarn run commitlint --edit {1}
+
+# https://github.com/evilmartians/lefthook/wiki/Migration-from-husky-with-lint-staged
+pre-commit:
+  parallel: true
+  commands:
+    eslint:
+      exclude: '\.(md|yml|lock)$'
+      run: yarn check-eslint {staged_files}
+    prettier:
+      exclude: 'yarn\.lock$'
+      run: yarn check-prettier {staged_files}
+
+pre-push:
+  parallel: true
+  commands:
+    packages-audit:
+      tags: frontend security
+      run: yarn npm audit
+    eslint:
+      run: yarn check-eslint {push_files}
+    prettier:
+      run: yarn check-prettier {push_files}
