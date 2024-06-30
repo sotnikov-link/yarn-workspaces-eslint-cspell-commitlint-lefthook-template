@@ -1,0 +1,30 @@
+/* eslint-disable jsonc/no-comments */
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "cSpell.enabled": false,
+
+  // https://github.com/gajus/eslint-config-canonical/tree/v43.0.13#visual-studio-code
+  "prettier.enable": false,
+  "editor.formatOnSave": true,
+  // eslint-disable-next-line @cspell/spellchecker
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
+  },
+  "[css][html][javascript][javascriptreact][json][markdown][typescript][typescriptreact][yaml]": {
+    // eslint-disable-next-line @cspell/spellchecker
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "eslint.validate": [
+    "css",
+    "html",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "markdown",
+    "typescript",
+    "typescriptreact",
+    "yaml"
+  ]
+}
