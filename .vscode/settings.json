@@ -1,18 +1,22 @@
 /* eslint-disable jsonc/no-comments */
-/* eslint-disable @cspell/spellchecker */
 {
+  "cSpell.enabled": true,
   "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.enabled": false,
 
   // https://github.com/gajus/eslint-config-canonical/tree/v43.0.13#visual-studio-code
-  "prettier.enable": false,
+  "prettier.enable": true,
   "editor.formatOnSave": true,
+  // cspell:ignore dbaeumer
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "never"
   },
-  "[css][html][javascript][javascriptreact][json][jsonc][markdown][typescript][typescriptreact][yaml]": {
+  "[markdown]": {
+    // cspell:ignore esbenp
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css][html][javascript][javascriptreact][json][jsonc][typescript][typescriptreact][yaml]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "eslint.validate": [

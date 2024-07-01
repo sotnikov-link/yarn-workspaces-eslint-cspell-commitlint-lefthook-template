@@ -1,7 +1,9 @@
 ### Project
 
 node_modules/
+# cspell:disable-next-line
 /.eslintcache
+/.cspellcache
 
 ### Yarn
 

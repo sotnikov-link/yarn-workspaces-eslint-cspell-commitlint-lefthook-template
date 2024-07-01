@@ -1,7 +1,5 @@
-// eslint-disable-next-line @cspell/spellchecker
 // @ts-nocheck
 import 'eslint-plugin-only-warn';
-import cspell from '@cspell/eslint-plugin/recommended';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import auto from 'eslint-config-canonical/configurations/auto.js';
 import { recommended as canonical } from 'eslint-config-canonical/configurations/canonical.js';
@@ -9,12 +7,12 @@ import { recommended as json } from 'eslint-config-canonical/configurations/json
 import { recommended as node } from 'eslint-config-canonical/configurations/node.js';
 import { recommended as prettier } from 'eslint-config-canonical/configurations/prettier.js';
 import { recommended as react } from 'eslint-config-canonical/configurations/react.js';
+import { recommended as yaml } from 'eslint-config-canonical/configurations/yaml.js';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import unusedImports from 'eslint-plugin-unused-imports';
 import tsLint from 'typescript-eslint';
-import { cspellOptions } from './eslint/cspell-options.js';
 import emptyLinesJs from './eslint/empty-lines/javascript.cjs';
 import emptyLinesTs from './eslint/empty-lines/typescript.cjs';
 import formatJsdoc from './eslint/jsdoc.cjs';
@@ -30,14 +28,6 @@ export default tsLint.config(
   reactProps,
   reactDisplayName,
   eslintPluginPrettierRecommended,
-
-  {
-    ...cspell,
-    rules: {
-      ...cspell.rules,
-      '@cspell/spellchecker': ['warn', cspellOptions],
-    },
-  },
 
   {
     ...prettier,
@@ -71,6 +61,18 @@ export default tsLint.config(
       'jsonc/object-curly-spacing': 'off',
       'jsonc/array-element-newline': 'off',
       'jsonc/array-bracket-newline': 'off',
+    },
+  },
+
+  {
+    ...yaml,
+    files: ['**/*.yml', '**/*.yaml'],
+    rules: {
+      ...yaml.rules,
+
+      'spaced-comment': 'off',
+      'yml/sort-keys': 'off',
+      'yml/no-multiple-empty-lines': 'off', // enough prettier
     },
   },
 

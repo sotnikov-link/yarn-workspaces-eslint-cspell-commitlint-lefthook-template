@@ -2,6 +2,8 @@
 
 ## Features
 
+<!-- cspell:ignore corepack -->
+
 - Yarn [Workspaces](https://yarnpkg.com/features/workspaces)
 - Corepack
   - https://yarnpkg.com/corepack
@@ -46,12 +48,15 @@ With awesome
 
 ## How to use
 
+<!-- cspell:ignore trpc typesafe pkgroll  -->
+
 - `corepack enable`
 - `git clone` this repository
-- use it or something else
+- use it or something else from my favorites
   - [tsx](https://www.npmjs.com/package/tsx) — the easiest way to run TypeScript
     in Node.js
-  - [pkgroll]() — the zero-config package bundler used by tsx!
+  - [pkgroll](https://www.npmjs.com/package/pkgroll) — the zero-config package
+    bundler used by tsx!
   - [vitest](https://www.npmjs.com/package/vite) — Next generation testing
     framework powered by Vite
   - [trpc](https://www.npmjs.com/package/@trpc/server) — End-to-end typesafe

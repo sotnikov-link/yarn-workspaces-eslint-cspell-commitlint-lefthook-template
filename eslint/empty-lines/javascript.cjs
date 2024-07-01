@@ -27,7 +27,7 @@ const javascript = {
         prevent: true,
         // otherwise Prettier formats different: div*2 and p>div*2 (Emmet)
 
-        // eslint-disable-next-line @cspell/spellchecker
+        // cspell:ignore multilines
         // allowMultilines: true, // will be added next versions
       },
     ],
