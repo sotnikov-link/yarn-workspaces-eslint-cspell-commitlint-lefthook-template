@@ -11,7 +11,7 @@ pre-commit:
   parallel: true
   commands:
     eslint:
-      exclude: '\.(md|lock|gitignore)$'
+      exclude: '\.(md|lock|gitignore|gitattributes)$'
       run: yarn check-eslint {staged_files}
     prettier:
       exclude: 'yarn\.lock$'
@@ -27,7 +27,7 @@ pre-push:
       tags: frontend security
       run: yarn npm audit
     eslint:
-      exclude: '\.(md|lock|gitignore)$'
+      exclude: '\.(md|lock|gitignore|gitattributes)$'
       run: yarn check-eslint {push_files}
     prettier:
       exclude: 'yarn\.lock$'
