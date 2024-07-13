@@ -9,7 +9,7 @@ const {
 const typescript = {
   // extends: [require.resolve('./javascript.cjs')],
 
-  files: ['*.{ts,tsx}'],
+  files: ['**/*.{ts,tsx}'],
 
   plugins: {
     '@typescript-eslint': require('@typescript-eslint/eslint-plugin'),
