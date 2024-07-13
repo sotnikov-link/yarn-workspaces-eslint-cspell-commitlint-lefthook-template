@@ -1,0 +1,6 @@
+{
+  "extends": "@some-name/tsconfig",
+  "compilerOptions": {
+    "tsBuildInfoFile": ".tsbuildinfo"
+  }
+}

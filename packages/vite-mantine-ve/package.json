@@ -18,6 +18,10 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@some-name/trpc-service": "workspace:^",
+    "@tanstack/react-query": "^5.51.1",
+    "@trpc/client": "^11.0.0-rc.461",
+    "@trpc/react-query": "^11.0.0-rc.461",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vanilla-extract/vite-plugin": "^4.0.11",

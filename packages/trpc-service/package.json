@@ -1,0 +1,23 @@
+{
+  "name": "@some-name/trpc-service",
+  "packageManager": "yarn@4.3.1",
+  "private": true,
+  "exports": {
+    ".": {
+      "types": "./out/router.d.mts",
+      "default": "./out/router.mjs"
+    }
+  },
+  "scripts": {
+    "start": "tsx src/run.ts",
+    "build": "pkgroll --minify --dist out --sourcemap inline",
+    "watch": "yarn build --watch"
+  },
+  "devDependencies": {
+    "@some-name/tsconfig": "workspace:^",
+    "@trpc/server": "^11.0.0-rc.461",
+    "pkgroll": "^2.1.1",
+    "tsx": "^4.16.2",
+    "zod": "^3.23.8"
+  }
+}

@@ -1,5 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
   "ignorePaths": ["*.svg"],
-  "words": ["lefthook", "ts-nocheck", "commitlint", "mantine"]
+  "words": ["lefthook", "ts-nocheck", "commitlint", "mantine", "pkgroll"],
+  "useGitignore": true
 }
