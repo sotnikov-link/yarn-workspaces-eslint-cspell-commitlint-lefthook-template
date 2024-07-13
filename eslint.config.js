@@ -21,6 +21,15 @@ import reactProps from './eslint/react/props.cjs';
 
 // eslint-disable-next-line import/no-default-export
 export default tsLint.config(
+  {
+    ignores: [
+      '.yarn/**',
+      'yarn.lock',
+      '**/node_modules/**',
+      'packages/*/dist/**',
+    ],
+  },
+
   ...auto,
   emptyLinesJs,
   emptyLinesTs,
@@ -133,9 +142,5 @@ export default tsLint.config(
       'react/jsx-handler-names': 'off',
       'react/forbid-component-props': 'off',
     },
-  },
-
-  {
-    ignores: ['.yarn/**', 'yarn.lock', 'node_modules/**'],
   },
 );
