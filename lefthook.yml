@@ -11,13 +11,13 @@ pre-commit:
   parallel: true
   commands:
     eslint:
-      exclude: '\.(md|html|svg|lock|gitignore|gitattributes)$'
+      exclude: &eslint-exclude '\.(md|html|svg|lock|gitignore|gitattributes)$'
       run: yarn check-eslint {staged_files}
     prettier:
-      exclude: 'yarn\.lock$'
+      exclude: &yarn-lock 'yarn\.lock$'
       run: yarn check-prettier {staged_files}
     cspell:
-      exclude: 'yarn\.lock$'
+      exclude: *yarn-lock
       run: yarn check-cspell {staged_files}
 
 pre-push:
@@ -27,11 +27,11 @@ pre-push:
       tags: frontend security
       run: yarn npm audit
     eslint:
-      exclude: '\.(md|html|svg|lock|gitignore|gitattributes)$'
+      exclude: *eslint-exclude
       run: yarn check-eslint {push_files}
     prettier:
-      exclude: 'yarn\.lock$'
+      exclude: *yarn-lock
       run: yarn check-prettier {push_files}
     cspell:
-      exclude: 'yarn\.lock$'
+      exclude: *yarn-lock
       run: yarn check-cspell {push_files}
