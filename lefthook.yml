@@ -4,7 +4,9 @@
 commit-msg:
   commands:
     commitlint:
-      run: yarn run commitlint --edit {1}
+      run: yarn commitlint --edit {1}
+    cspell:
+      run: yarn check-cspell {1}
 
 # https://github.com/evilmartians/lefthook/wiki/Migration-from-husky-with-lint-staged
 pre-commit:
