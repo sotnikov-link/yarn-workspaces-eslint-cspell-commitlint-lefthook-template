@@ -20,9 +20,19 @@
     "@commitlint/config-conventional": "^19.2.2",
     "@commitlint/types": "^19.0.3",
     "@cspell/dict-npm": "^5.0.16",
+    "@eslint/js": "^9.6.0",
+    "@types/eslint__js": "^8.42.3",
     "cspell": "^8.10.4",
+    "eslint": "^9.6.0",
+    "eslint-config-canonical": "^43.0.13",
+    "eslint-plugin-only-warn": "^1.1.0",
+    "eslint-plugin-react-refresh": "^0.4.7",
+    "eslint-plugin-regex": "^1.10.0",
+    "eslint-plugin-simple-import-sort": "^12.1.0",
+    "eslint-plugin-unused-imports": "^4.0.0",
     "lefthook": "^1.6.18",
     "prettier": "^3.3.2",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.2",
+    "typescript-eslint": "^7.14.1"
   }
 }
