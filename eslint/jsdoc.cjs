@@ -26,7 +26,7 @@ const parts = {
     start: '\\*',
 
     get indentedEmpty() {
-      return parts.indent + parts.line.start + '\\n';
+      return `${parts.indent + parts.line.start}\\n`;
     },
   },
 

@@ -1,4 +1,3 @@
-/* eslint-disable jsonc/no-comments */
 {
   "compilerOptions": {
     "target": "ESNext",

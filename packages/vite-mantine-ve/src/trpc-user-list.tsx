@@ -13,7 +13,9 @@ export const TrpcUserList = memo(() => {
         <Box p="md">
           {userListQuery.data?.map((user) => (
             <Text key={user.id} ta="center">
-              {user.id}: {user.name}
+              {user.id}
+              :
+              {user.name}
             </Text>
           ))}
         </Box>
@@ -29,8 +31,7 @@ export const TrpcUserList = memo(() => {
                     userListQuery.refetch();
                   },
                 },
-              )
-            }
+              )}
           >
             Add User
           </Button>

@@ -1,4 +1,4 @@
-type User = { id: string; name: string };
+interface User { id: string; name: string }
 
 // Imaginary database
 const users: User[] = [];

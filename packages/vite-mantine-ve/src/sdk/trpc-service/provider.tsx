@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { httpBatchLink } from '@trpc/client';
-import { type PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react';
 import { memo, useState } from 'react';
 import { trpcService } from '../trpc-service';
 

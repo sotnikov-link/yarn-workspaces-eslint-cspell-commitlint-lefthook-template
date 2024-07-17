@@ -1,6 +1,6 @@
-import { type UserConfig } from '@commitlint/types';
+import { readdirSync } from 'node:fs';
+import type { UserConfig } from '@commitlint/types';
 import { RuleConfigSeverity as Level } from '@commitlint/types';
-import { readdirSync } from 'fs';
 
 const packageDirectoryList: string[] = [];
 
@@ -10,8 +10,8 @@ try {
       packageDirectoryList.push(item.name);
     }
   }
-} catch (error) {
-  // eslint-disable-next-line no-console
+}
+catch (error) {
   console.warn({ warning: error });
 }
 
@@ -36,8 +36,8 @@ const Configuration: UserConfig = {
               for (const [index, part] of scope
                 .split(scopeSeparator)
                 .entries()) {
-                const isValid =
-                  index === 0 ? !part.startsWith(' ') : part.startsWith(' ');
+                const isValid
+                  = index === 0 ? !part.startsWith(' ') : part.startsWith(' ');
 
                 if (isValid === false) {
                   return [
