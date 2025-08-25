@@ -16,11 +16,12 @@ import tsLint from 'typescript-eslint';
 import emptyLinesJs from './eslint/empty-lines/javascript.cjs';
 import emptyLinesTs from './eslint/empty-lines/typescript.cjs';
 import formatJsdoc from './eslint/jsdoc.cjs';
-import reactDisplayName from './eslint/react/display-name-custom.cjs';
-import reactProps from './eslint/react/props.cjs';
+import reactRules from './eslint/react/rules.cjs';
 
-// eslint-disable-next-line import/no-default-export
-export default tsLint.config(
+/**
+ * @type {import('typescript-eslint').FlatConfig}
+ */
+const config = tsLint.config(
   {
     ignores: [
       '.yarn/**',
@@ -37,8 +38,8 @@ export default tsLint.config(
   emptyLinesJs,
   emptyLinesTs,
   formatJsdoc,
-  reactProps,
-  reactDisplayName,
+
+  reactRules,
   eslintPluginPrettierRecommended,
 
   {
@@ -147,3 +148,6 @@ export default tsLint.config(
     },
   },
 );
+
+// eslint-disable-next-line import/no-default-export
+export default config;

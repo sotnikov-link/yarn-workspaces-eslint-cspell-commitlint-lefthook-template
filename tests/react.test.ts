@@ -50,7 +50,7 @@ describe('React rules', () => {
     it('should report error for type instead of interface', async () => {
       // 1. Check that ESLint finds the error
       const lintResult = await fixtures.lintFile('react/bad-props-type.tsx', {
-        ruleId: 'regex/invalid-react-props-type',
+        ruleId: 'custom/react-props-interface',
       });
 
       expect(lintResult.errors).toHaveLength(1);
@@ -61,6 +61,14 @@ describe('React rules', () => {
 
       // Note: This rule doesn't have autofix according to TODO.md
       // So we only test that it reports the error
+    });
+
+    it('should not report error for types not ending with Props', async () => {
+      const lintResult = await fixtures.lintFile('react/good-other-type.tsx', {
+        ruleId: 'custom/react-props-interface',
+      });
+
+      expect(lintResult.errors).toHaveLength(0);
     });
   });
 
