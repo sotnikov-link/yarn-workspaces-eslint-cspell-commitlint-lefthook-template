@@ -39,3 +39,20 @@ pre-push:
     cspell:
       exclude: *yarn-lock
       run: yarn check-cspell {push_files}
+
+# CI-specific hooks that work better in detached HEAD
+ci:
+  parallel: true
+  commands:
+    packages-audit:
+      tags: frontend security
+      run: yarn npm audit
+    eslint:
+      exclude: *eslint-exclude
+      run: yarn check-eslint
+    prettier:
+      exclude: *yarn-lock
+      run: yarn check-prettier
+    cspell:
+      exclude: *yarn-lock
+      run: yarn check-cspell

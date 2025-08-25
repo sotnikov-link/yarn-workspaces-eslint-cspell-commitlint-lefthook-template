@@ -18,5 +18,9 @@ build/
 .eslintcache
 .cspellcache
 
+# Configuration files that don't need formatting
+.prettierignore
+*.svg
+
 # Test fixtures (they contain intentional formatting)
 tests/fixtures/
