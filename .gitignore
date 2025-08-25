@@ -1,4 +1,5 @@
 ### Project
+/coverage/
 
 node_modules/
 # cspell:disable-next-line

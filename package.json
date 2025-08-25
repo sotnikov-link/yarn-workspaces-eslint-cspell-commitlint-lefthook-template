@@ -8,20 +8,27 @@
   ],
   "scripts": {
     "check-commitlint": "commitlint --from 35bf7118",
-    "check-eslint": "eslint --color --cache --max-warnings=0 --report-unused-disable-directives",
+    "check-eslint": "eslint --color --cache --max-warnings=0 --report-unused-disable-directives --no-warn-ignored",
     "check-eslint-all": "yarn check-eslint ./",
     "check-prettier": "prettier --check",
     "check-prettier-all": "yarn check-prettier .",
     "check-cspell": "cspell --quiet --cache",
-    "check-cspell-all": "yarn check-cspell ."
+    "check-cspell-all": "yarn check-cspell .",
+    "test": "vitest run --coverage"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@commitlint/types": "^19.0.3",
+    "@cspell/dict-git": "^3.0.7",
+    "@cspell/dict-node": "^5.0.8",
     "@cspell/dict-npm": "^5.0.16",
+    "@cspell/dict-software-terms": "^5.1.6",
+    "@cspell/dict-typescript": "^3.2.3",
     "@eslint/js": "^9.6.0",
     "@types/eslint__js": "^8.42.3",
+    "@vitest/coverage-v8": "^3.2.4",
+    "@vitest/ui": "^3.2.4",
     "cspell": "^8.10.4",
     "eslint": "^9.6.0",
     "eslint-config-canonical": "^43.0.13",
@@ -33,6 +40,7 @@
     "lefthook": "^1.6.18",
     "prettier": "^3.3.2",
     "typescript": "^5.5.2",
-    "typescript-eslint": "^7.14.1"
+    "typescript-eslint": "^7.14.1",
+    "vitest": "^3.2.4"
   }
 }
