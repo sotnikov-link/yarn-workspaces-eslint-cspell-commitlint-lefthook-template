@@ -1,0 +1,188 @@
+---
+globs: *.ts,*.tsx,*.js,*.jsx,*.cjs,*.mjs
+alwaysApply: false
+---
+
+# Code Quality Standards
+
+## Comments and Documentation
+
+1. **Use English for all comments** - All code comments must be in English
+2. **JSDoc comments** for functions and classes without types for TypeScript files
+3. **Inline comments** for complex logic only
+4. **Keep comments up-to-date** with code changes
+
+## ESLint Rules
+
+This project uses custom ESLint configurations:
+
+- **React rules**: Display name matching, props validation
+- **JSDoc rules**: Proper documentation formatting
+- **Empty lines**: Consistent spacing rules
+- **Custom rules**: Project-specific linting requirements
+
+### JSDoc Standards
+
+```typescript
+/**
+ * Calculates the sum of two numbers
+ * @returns The sum of a and b
+ */
+function add(
+  /**
+   * First number
+   */
+  a: number, 
+
+  /**
+   * Second number
+   */
+  b: number
+): number {
+  return a + b;
+}
+```
+
+## Code Formatting
+
+1. **Prettier**: Automatic code formatting
+2. **Consistent indentation**: 2 spaces
+3. **Trailing commas**: Use in objects and arrays
+4. **Semicolons**: Always use semicolons
+5. **Quotes**: Use single quotes for strings
+
+## Spell Checking
+
+- **cSpell configuration**: [cspell.json](mdc:cspell.json)
+- **English comments**: All code comments must be in English
+- **Technical terms**: Properly spelled technical terminology
+- **Custom dictionaries**: Project-specific terms
+
+## Git Commit Standards
+
+- **Conventional commits**: Follow conventional commit format
+- **Commitlint**: Automated validation via [commitlint.config.ts](mdc:commitlint.config.ts)
+- **Lefthook**: Pre-commit hooks via [lefthook.yml](mdc:lefthook.yml)
+
+### Commit Message Format
+
+```
+type(scope): description
+
+[optional body]
+
+[optional footer]
+```
+
+Examples:
+- `feat(ui): add user profile component`
+- `fix(api): resolve authentication token issue`
+- `docs(readme): update installation instructions`
+
+## Testing Standards
+
+- **Vitest**: Testing framework with fixtures in `tests/`
+- **Test files**: Use `.test.ts` or `.spec.ts` extensions
+- **Fixtures**: Store test data in `tests/fixtures/`
+- **Coverage**: Aim for comprehensive test coverage
+
+## Error Handling
+
+1. **Type-safe error handling** - Avoid catching generic errors
+2. **Meaningful error messages** - Provide context for debugging
+3. **Graceful degradation** - Handle edge cases appropriately
+4. **Logging**: Use appropriate logging levels
+
+## Performance Considerations
+
+1. **Avoid unnecessary re-renders** in React components
+2. **Use proper dependency arrays** in useEffect hooks
+3. **Optimize imports** - Only import what you need
+4. **Lazy loading** for large components when appropriate
+# Code Quality Standards
+
+## Comments and Documentation
+
+1. **Use English for all comments** - All code comments must be in English
+2. **JSDoc comments** for functions and classes without types for TypeScript files
+3. **Inline comments** for complex logic only
+4. **Keep comments up-to-date** with code changes
+
+## JSDoc Standards
+
+```typescript
+/**
+ * Calculates the sum of two numbers
+ * @returns The sum of a and b
+ */
+function add(
+  /**
+   * First number
+   */
+  a: number, 
+
+  /**
+   * Second number
+   */
+  b: number
+): number {
+  return a + b;
+}
+```
+
+## Code Formatting
+
+1. **Prettier**: Automatic code formatting
+2. **Consistent indentation**: 2 spaces
+3. **Trailing commas**: Use in objects and arrays
+4. **Semicolons**: Always use semicolons
+5. **Quotes**: Use single quotes for strings
+
+## Spell Checking
+
+- **cSpell configuration**: [cspell.json](mdc:cspell.json)
+- **English comments**: All code comments must be in English
+- **Technical terms**: Properly spelled technical terminology
+- **Custom dictionaries**: Project-specific terms
+
+## Git Commit Standards
+
+- **Conventional commits**: Follow conventional commit format
+- **Commitlint**: Automated validation via [commitlint.config.ts](mdc:commitlint.config.ts)
+- **Lefthook**: Pre-commit hooks via [lefthook.yml](mdc:lefthook.yml)
+
+### Commit Message Format
+
+```
+type(scope): description
+
+[optional body]
+
+[optional footer]
+```
+
+Examples:
+- `feat(ui): add user profile component`
+- `fix(api): resolve authentication token issue`
+- `docs(readme): update installation instructions`
+
+## Testing Standards
+
+- **Vitest**: Testing framework with fixtures in `tests/`
+- **Test files**: Use `.test.ts` or `.spec.ts` extensions
+- **Fixtures**: Store test data in `tests/fixtures/`
+- **Coverage**: Aim for comprehensive test coverage
+
+## Error Handling
+
+1. **Type-safe error handling** - Avoid catching generic errors
+2. **Meaningful error messages** - Provide context for debugging
+3. **Graceful degradation** - Handle edge cases appropriately
+4. **Logging**: Use appropriate logging levels
+
+## Performance Considerations
+
+1. **Avoid unnecessary re-renders** in React components
+2. **Use proper dependency arrays** in useEffect hooks
+3. **Optimize imports** - Only import what you need
+4. **Lazy loading** for large components when appropriate

@@ -16,7 +16,7 @@ pre-commit:
       exclude: &eslint-exclude '\.(md|html|svg|lock|gitignore|gitattributes)$'
       run: yarn check-eslint {staged_files}
     prettier:
-      exclude: &yarn-lock 'yarn\.lock$'
+      exclude: &yarn-lock 'yarn\.lock$|\.mdc$'
       run: yarn check-prettier {staged_files}
     cspell:
       exclude: *yarn-lock
@@ -34,7 +34,7 @@ pre-push:
       exclude: *eslint-exclude
       run: yarn check-eslint {push_files}
     prettier:
-      exclude: *yarn-lock
+      exclude: 'yarn\.lock$|\.mdc$'
       run: yarn check-prettier {push_files}
     cspell:
       exclude: *yarn-lock
@@ -51,7 +51,7 @@ ci:
       exclude: *eslint-exclude
       run: yarn check-eslint-all
     prettier:
-      exclude: *yarn-lock
+      exclude: 'yarn\.lock$|\.mdc$'
       run: yarn check-prettier-all
     cspell:
       exclude: *yarn-lock

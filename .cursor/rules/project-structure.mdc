@@ -1,0 +1,87 @@
+---
+alwaysApply: true
+description: Project layout, package management (Yarn), key configuration files, development workflow, code quality tools
+---
+
+# Project Structure Guide
+
+## Package Management
+
+This project uses **Yarn** for package management. Always use yarn commands instead of npm:
+
+- `yarn install` - Install dependencies
+- `yarn add <package>` - Add new dependency
+- `yarn add -D <package>` - Add dev dependency
+- `yarn remove <package>` - Remove dependency
+- `yarn run <script>` - Run npm scripts
+
+## Project Layout
+
+The project follows a monorepo structure with multiple packages:
+
+- `eslint/` - Custom ESLint rules and configurations
+- `tests/` - Test fixtures and utilities
+
+## Key Configuration Files
+
+- [package.json](mdc:package.json) - Root package configuration
+- [eslint.config.js](mdc:eslint.config.js) - ESLint configuration
+- [cspell.json](mdc:cspell.json) - Spell checking configuration
+- [commitlint.config.ts](mdc:commitlint.config.ts) - Commit message linting
+- [lefthook.yml](mdc:lefthook.yml) - Git hooks configuration
+- [tsconfig.json](mdc:tsconfig.json) - Root TypeScript configuration
+
+## Development Workflow
+
+1. **Code Quality**: ESLint, Prettier, and cSpell are configured
+2. **Git Hooks**: Lefthook manages pre-commit and commit-msg hooks
+3. **Testing**: Vitest is used for testing with fixtures in `tests/`
+4. **Type Safety**: Strict TypeScript configuration across all packages
+
+## Code Quality Tools
+
+- **ESLint**: Custom rules for React, JSDoc, and empty lines
+- **Prettier**: Code formatting with [prettier.config.cjs](mdc:prettier.config.cjs)
+- **cSpell**: Spell checking with English-only comments
+- **Commitlint**: Conventional commit message validation
+# Project Structure Guide
+
+## Package Management
+
+This project uses **Yarn** for package management. Always use yarn commands instead of npm:
+
+- `yarn install` - Install dependencies
+- `yarn add <package>` - Add new dependency
+- `yarn add -D <package>` - Add dev dependency
+- `yarn remove <package>` - Remove dependency
+- `yarn run <script>` - Run npm scripts
+
+## Project Layout
+
+The project follows a monorepo structure with multiple packages:
+
+- `eslint/` - Custom ESLint rules and configurations
+- `tests/` - Test fixtures and utilities
+
+## Key Configuration Files
+
+- [package.json](mdc:package.json) - Root package configuration
+- [eslint.config.js](mdc:eslint.config.js) - ESLint configuration
+- [cspell.json](mdc:cspell.json) - Spell checking configuration
+- [commitlint.config.ts](mdc:commitlint.config.ts) - Commit message linting
+- [lefthook.yml](mdc:lefthook.yml) - Git hooks configuration
+- [tsconfig.json](mdc:tsconfig.json) - Root TypeScript configuration
+
+## Development Workflow
+
+1. **Code Quality**: ESLint, Prettier, and cSpell are configured
+2. **Git Hooks**: Lefthook manages pre-commit and commit-msg hooks
+3. **Testing**: Vitest is used for testing with fixtures in `tests/`
+4. **Type Safety**: Strict TypeScript configuration across all packages
+
+## Code Quality Tools
+
+- **ESLint**: Custom rules for React, JSDoc, and empty lines
+- **Prettier**: Code formatting with [prettier.config.cjs](mdc:prettier.config.cjs)
+- **cSpell**: Spell checking with English-only comments
+- **Commitlint**: Conventional commit message validation

@@ -10,5 +10,11 @@ module.exports = {
         proseWrap: 'always',
       },
     },
+    {
+      files: '*.mdc',
+      options: {
+        proseWrap: 'always',
+      },
+    },
   ],
 };
