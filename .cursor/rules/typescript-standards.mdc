@@ -1,0 +1,147 @@
+---
+alwaysApply: false
+globs: *.ts,*.tsx
+---
+
+# TypeScript Standards
+
+## Type Safety
+
+1. **Avoid `any` types** - Always use proper TypeScript types
+2. **Use explicit typing** for function parameters and return types
+3. **Prefer interfaces over types** for object shapes
+4. **Use generic types** when appropriate for reusable components
+
+## Code Organization
+
+1. **Use explicit file paths** for imports - never use index.ts barrel exports
+2. **File names in kebab-case** and match the main export name
+3. **Group imports** in this order:
+   - External libraries
+   - Internal modules (relative paths)
+   - Type imports
+
+## Examples
+
+### ✅ Good TypeScript Practices
+```typescript
+// Explicit typing
+interface UserData {
+  id: string;
+  name: string;
+  email: string;
+}
+
+// Generic function with proper typing
+function processData<T extends UserData>(data: T[]): T[] {
+  return data.filter(item => item.id !== '');
+}
+
+// Explicit file imports
+import { UserService } from './services/user-service';
+import type { UserData } from './types/user-data';
+```
+
+### ❌ Avoid These Patterns
+```typescript
+// Don't use any
+function processData(data: any): any {
+  return data;
+}
+
+// Don't use index.ts imports
+import { UserService } from './services';
+```
+
+## Naming Conventions
+
+1. **Files**: kebab-case (e.g., `user-service.ts`)
+2. **Functions**: camelCase (e.g., `getUserData`)
+3. **Types/Interfaces**: PascalCase (e.g., `UserData`)
+4. **Constants**: UPPER_SNAKE_CASE (e.g., `API_BASE_URL`)
+
+## Import Organization
+
+```typescript
+// External libraries
+import React from 'react';
+import { useState, useEffect } from 'react';
+
+// Internal modules (relative paths)
+import { UserService } from './services/user-service';
+import { formatDate } from './utils/date-utils';
+
+// Type imports
+import type { UserData, ApiResponse } from './types/user-data';
+```
+# TypeScript Standards
+
+## Type Safety
+
+1. **Avoid `any` types** - Always use proper TypeScript types
+2. **Use explicit typing** for function parameters and return types
+3. **Prefer interfaces over types** for object shapes
+4. **Use generic types** when appropriate for reusable components
+
+## Code Organization
+
+1. **Use explicit file paths** for imports - never use index.ts barrel exports
+2. **File names in kebab-case** and match the main export name
+3. **Group imports** in this order:
+   - External libraries
+   - Internal modules (relative paths)
+   - Type imports
+
+## Examples
+
+### ✅ Good TypeScript Practices
+```typescript
+// Explicit typing
+interface UserData {
+  id: string;
+  name: string;
+  email: string;
+}
+
+// Generic function with proper typing
+function processData<T extends UserData>(data: T[]): T[] {
+  return data.filter(item => item.id !== '');
+}
+
+// Explicit file imports
+import { UserService } from './services/user-service';
+import type { UserData } from './types/user-data';
+```
+
+### ❌ Avoid These Patterns
+```typescript
+// Don't use any
+function processData(data: any): any {
+  return data;
+}
+
+// Don't use index.ts imports
+import { UserService } from './services';
+```
+
+## Naming Conventions
+
+1. **Files**: kebab-case (e.g., `user-service.ts`)
+2. **Functions**: camelCase (e.g., `getUserData`)
+3. **Types/Interfaces**: PascalCase (e.g., `UserData`)
+4. **Constants**: UPPER_SNAKE_CASE (e.g., `API_BASE_URL`)
+
+## Import Organization
+
+```typescript
+// External libraries
+import React from 'react';
+import { useState, useEffect } from 'react';
+
+// Internal modules (relative paths)
+import { UserService } from './services/user-service';
+import { formatDate } from './utils/date-utils';
+
+// Type imports
+import type { UserData, ApiResponse } from './types/user-data';
+```

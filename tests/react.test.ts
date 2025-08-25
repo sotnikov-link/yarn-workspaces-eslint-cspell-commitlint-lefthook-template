@@ -18,7 +18,7 @@ describe('React rules', () => {
       const lintResult = await fixtures.lintFile(
         'react/bad-display-name-mismatch.tsx',
         {
-          ruleId: 'regex/invalid-react-display-name',
+          ruleId: 'custom/react-display-name',
         },
       );
 
@@ -67,7 +67,7 @@ describe('React rules', () => {
   describe('Correct React code', () => {
     it('should not report errors for correct React code', async () => {
       const lintResult = await fixtures.lintFile('react/good-correct.tsx', {
-        ruleId: 'regex/invalid-react-display-name',
+        ruleId: 'custom/react-display-name',
       });
 
       expect(lintResult.errors).toHaveLength(0);

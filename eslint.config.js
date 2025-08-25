@@ -16,7 +16,7 @@ import tsLint from 'typescript-eslint';
 import emptyLinesJs from './eslint/empty-lines/javascript.cjs';
 import emptyLinesTs from './eslint/empty-lines/typescript.cjs';
 import formatJsdoc from './eslint/jsdoc.cjs';
-import reactDisplayName from './eslint/react/display-name.cjs';
+import reactDisplayName from './eslint/react/display-name-custom.cjs';
 import reactProps from './eslint/react/props.cjs';
 
 // eslint-disable-next-line import/no-default-export

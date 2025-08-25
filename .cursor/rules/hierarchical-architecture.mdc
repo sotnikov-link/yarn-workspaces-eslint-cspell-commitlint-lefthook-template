@@ -1,0 +1,146 @@
+---
+globs: *.ts,*.tsx,*.cjs,*.js
+alwaysApply: false
+---
+# Hierarchical Architecture Rules
+
+## Directory Structure Pattern
+Follow this hierarchical structure for modules:
+
+```
+src/
+  module-name.tsx (first-level module)
+  module-name/
+    sub-module.tsx (second-level module)
+    sub-module/
+      nested-module.tsx (third-level module)
+      nested-module/
+        low-level-function.tsx (fourth-level module with types)
+```
+
+## Import Rules
+
+1. **First-level modules** should import from lower-level modules
+2. **Lower-level modules** should NOT import from higher-level modules
+3. **Types and resources** should be defined within the lowest-level module that uses them
+4. **Use explicit file paths** - never use index.ts files for module imports
+
+## Examples
+
+### First-level module (module-name.tsx)
+```typescript
+// ✅ Correct - imports from lower-level
+import { lowLevelFunction, type LowLevelFunctionType } from "./module-name/sub-module/nested-module/low-level-function";
+import { subModule } from "./module-name/sub-module";
+```
+
+### Second-level module (module-name/sub-module.tsx)
+```typescript
+// ✅ Correct - imports from lower-level
+import { nestedModule } from "./sub-module/nested-module";
+```
+
+### Fourth-level module (module-name/sub-module/nested-module/low-level-function.tsx)
+```typescript
+// ✅ Correct - defines its own types and doesn't import from higher levels
+export type LowLevelFunctionType = () => void;
+
+export const lowLevelFunction: LowLevelFunctionType = () => {
+  // module implementation
+};
+```
+
+## Naming Conventions
+
+1. **File names**: Use kebab-case and match the main export name
+2. **No index files**: Never use index.ts files for module imports - always use explicit file paths
+
+## Architecture Principles
+
+1. **Dependency Direction**: Dependencies should flow downward only
+2. **Type Co-location**: Types should be defined in the lowest-level module that uses them
+3. **Single Responsibility**: Each module should have a single, clear responsibility
+4. **Encapsulation**: Lower-level modules should not know about higher-level modules
+
+## Validation Rules
+
+- ✅ High-level imports from low-level
+- ✅ Types defined in lowest-level component
+- ✅ Explicit file paths used
+- ✅ File names match main export (kebab-case)
+- ❌ Lower-level imports from higher-level
+- ❌ Types defined in higher-level when used in lower-level
+- ❌ Index.ts barrel exports for module imports
+- ❌ Using index files for imports
+
+# Hierarchical Architecture Rules
+
+## Directory Structure Pattern
+Follow this hierarchical structure for modules:
+
+```
+src/
+  module-name.tsx (first-level module)
+  module-name/
+    sub-module.tsx (second-level module)
+    sub-module/
+      nested-module.tsx (third-level module)
+      nested-module/
+        low-level-function.tsx (fourth-level module with types)
+```
+
+## Import Rules
+
+1. **First-level modules** should import from lower-level modules
+2. **Lower-level modules** should NOT import from higher-level modules
+3. **Types and resources** should be defined within the lowest-level module that uses them
+4. **Use explicit file paths** - never use index.ts files for module imports
+
+## Examples
+
+### First-level module (module-name.tsx)
+```typescript
+// ✅ Correct - imports from lower-level
+import { lowLevelFunction, type LowLevelFunctionType } from "./module-name/sub-module/nested-module/low-level-function";
+import { subModule } from "./module-name/sub-module";
+```
+
+### Second-level module (module-name/sub-module.tsx)
+```typescript
+// ✅ Correct - imports from lower-level
+import { nestedModule } from "./sub-module/nested-module";
+```
+
+### Fourth-level module (module-name/sub-module/nested-module/low-level-function.tsx)
+```typescript
+// ✅ Correct - defines its own types and doesn't import from higher levels
+export type LowLevelFunctionType = () => void;
+
+export const lowLevelFunction: LowLevelFunctionType = () => {
+  // module implementation
+};
+```
+
+## Naming Conventions
+
+1. **File names**: Use kebab-case and match the main export name
+2. **No index files**: Never use index.ts files for module imports - always use explicit file paths
+
+## Architecture Principles
+
+1. **Dependency Direction**: Dependencies should flow downward only
+2. **Type Co-location**: Types should be defined in the lowest-level module that uses them
+3. **Single Responsibility**: Each module should have a single, clear responsibility
+4. **Encapsulation**: Lower-level modules should not know about higher-level modules
+
+## Validation Rules
+
+- ✅ High-level imports from low-level
+- ✅ Types defined in lowest-level component
+- ✅ Explicit file paths used
+- ✅ File names match main export (kebab-case)
+- ❌ Lower-level imports from higher-level
+- ❌ Types defined in higher-level when used in lower-level
+- ❌ Index.ts barrel exports for module imports
+- ❌ Using index files for imports
+
