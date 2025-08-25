@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version:
+          - 18.x
+          - 20.x
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      # Run lefthook pre-commit hooks (equivalent to local pre-commit)
+      - name: Run lefthook pre-commit checks
+        run: yarn lefthook run pre-commit
+
+      # Run lefthook pre-push hooks (equivalent to local pre-push)
+      - name: Run lefthook pre-push checks
+        run: yarn lefthook run pre-push
+
+      # Run tests with coverage
+      - name: Run tests with coverage
+        run: yarn test
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./coverage/lcov.info
+          flags: unit-tests
+          name: codecov-umbrella
+          fail_ci_if_error: false

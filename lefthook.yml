@@ -21,6 +21,8 @@ pre-commit:
     cspell:
       exclude: *yarn-lock
       run: yarn check-cspell {staged_files}
+    test:
+      run: yarn test
 
 pre-push:
   parallel: true

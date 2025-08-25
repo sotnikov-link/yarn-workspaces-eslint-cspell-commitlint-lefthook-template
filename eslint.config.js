@@ -27,6 +27,7 @@ export default tsLint.config(
       'yarn.lock',
       '**/node_modules/**',
       'packages/*/dist/**',
+      'tests/fixtures/**',
     ],
   },
 

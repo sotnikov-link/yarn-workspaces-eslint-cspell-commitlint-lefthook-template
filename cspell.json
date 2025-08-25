@@ -2,6 +2,13 @@
   "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
   "ignorePaths": ["*.svg"],
   "import": ["@cspell/dict-npm/cspell-ext.json"],
-  "words": ["lefthook", "ts-nocheck", "commitlint", "mantine", "pkgroll"],
+  "words": [
+    "lefthook",
+    "ts-nocheck",
+    "commitlint",
+    "mantine",
+    "pkgroll",
+    "eslintcache"
+  ],
   "useGitignore": true
 }
