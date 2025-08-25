@@ -28,6 +28,8 @@ export default tsLint.config(
       '**/node_modules/**',
       'packages/*/dist/**',
       'tests/fixtures/**',
+      'coverage/**',
+      '_ignored/**',
     ],
   },
 

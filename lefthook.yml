@@ -49,10 +49,10 @@ ci:
       run: yarn npm audit
     eslint:
       exclude: *eslint-exclude
-      run: yarn check-eslint
+      run: yarn check-eslint-all
     prettier:
       exclude: *yarn-lock
-      run: yarn check-prettier
+      run: yarn check-prettier-all
     cspell:
       exclude: *yarn-lock
-      run: yarn check-cspell
+      run: yarn check-cspell-all
