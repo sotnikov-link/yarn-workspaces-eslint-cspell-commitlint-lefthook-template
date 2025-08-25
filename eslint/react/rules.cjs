@@ -1,4 +1,5 @@
-const displayNameRule = require('../rules/display-name-match.cjs');
+const displayNameRule = require('./react-display-name.cjs');
+const reactPropsRule = require('./react-props-interface.cjs');
 
 /**
  * @type {import('eslint').Linter.FlatConfig}
@@ -9,11 +10,13 @@ const displayNameCustom = {
     custom: {
       rules: {
         'react-display-name': displayNameRule,
+        'react-props-interface': reactPropsRule,
       },
     },
   },
   rules: {
     'custom/react-display-name': 'warn',
+    'custom/react-props-interface': 'warn',
   },
 };
 
