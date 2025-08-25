@@ -8,7 +8,8 @@
     "commitlint",
     "mantine",
     "pkgroll",
-    "eslintcache"
+    "eslintcache",
+    "vitest"
   ],
   "useGitignore": true
 }

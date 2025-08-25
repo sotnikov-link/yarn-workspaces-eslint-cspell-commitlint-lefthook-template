@@ -9,7 +9,7 @@ export default defineConfig({
     globals: true,
     coverage: {
       provider: 'v8',
-      reporter: ['text-summary', 'json', 'html'],
+      reporter: ['text-summary', 'json', 'html', 'lcov'],
       include: [
         // Include custom ESLint rules for coverage reporting
         // These rules are tested in tests/jsdoc.test.ts and tests/react.test.ts
