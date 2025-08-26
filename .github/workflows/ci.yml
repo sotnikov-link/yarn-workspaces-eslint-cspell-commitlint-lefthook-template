@@ -63,11 +63,3 @@ jobs:
       # Run tests with coverage
       - name: Run tests with coverage
         run: yarn test
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          file: ./coverage/lcov.info
-          flags: unit-tests
-          name: codecov-umbrella
-          fail_ci_if_error: false
