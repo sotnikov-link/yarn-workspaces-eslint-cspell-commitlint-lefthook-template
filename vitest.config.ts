@@ -7,6 +7,14 @@ export default defineConfig({
     environment: 'node',
     setupFiles: [],
     globals: true,
+    reporters: [
+      [
+        'default',
+        {
+          summary: false,
+        },
+      ],
+    ],
     coverage: {
       provider: 'v8',
       reporter: ['text-summary', 'json', 'html', 'lcov'],

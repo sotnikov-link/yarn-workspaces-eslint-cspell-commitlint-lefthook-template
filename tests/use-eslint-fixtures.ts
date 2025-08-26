@@ -14,6 +14,7 @@ const getESLint = (options: { fix?: boolean } = {}): ESLint => {
     overrideConfigFile: join(process.cwd(), 'eslint.config.js'),
     cache: false, // Disable cache to ensure fresh configuration
     fix: options.fix, // Enable autofix when needed
+    ignore: false, // Disable ignore to check test fixtures
   });
 };
 

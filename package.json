@@ -7,14 +7,16 @@
     "packages/*"
   ],
   "scripts": {
+    "clean": "rm -rf coverage packages/*/out packages/*/dist",
+    "test": "vitest run --coverage",
+    "build": "lefthook run ci",
     "check-commitlint": "commitlint --from 35bf7118",
     "check-eslint": "eslint --color --cache --max-warnings=0 --report-unused-disable-directives --no-warn-ignored",
     "check-eslint-all": "yarn check-eslint ./",
     "check-prettier": "prettier --check",
     "check-prettier-all": "yarn check-prettier .",
     "check-cspell": "cspell --quiet --cache",
-    "check-cspell-all": "yarn check-cspell .",
-    "test": "vitest run --coverage"
+    "check-cspell-all": "yarn check-cspell ."
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",

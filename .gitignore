@@ -2,6 +2,10 @@
 /coverage/
 
 node_modules/
+
+# Build outputs
+packages/*/out/
+packages/*/dist/
 # cspell:disable-next-line
 /.eslintcache
 /.cspellcache

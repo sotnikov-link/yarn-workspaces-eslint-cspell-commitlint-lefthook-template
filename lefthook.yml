@@ -58,12 +58,9 @@ ci:
       run: yarn check-cspell-all
     test:
       run: yarn test
-    build-trpc-service:
-      tags: backend build
-      run: yarn workspace @some-name/trpc-service build
-    build-vite-mantine:
-      tags: frontend build
-      run: yarn workspace @some-name/vite-mantine build
+    build:
+      tags: build
+      run: yarn workspace @some-name/trpc-service build && yarn workspace @some-name/vite-mantine build
 
 # Development testing hooks
 test-dev:
