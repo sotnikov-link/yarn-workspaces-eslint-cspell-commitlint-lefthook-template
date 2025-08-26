@@ -1,14 +1,14 @@
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { useEslintFixtures } from './use-eslint-fixtures';
 
 describe('React rules', () => {
   const fixtures = useEslintFixtures();
 
-  beforeEach(() => {
+  beforeAll(() => {
     fixtures.setup();
   });
 
-  afterEach(() => {
+  afterAll(() => {
     fixtures.cleanup();
   });
 

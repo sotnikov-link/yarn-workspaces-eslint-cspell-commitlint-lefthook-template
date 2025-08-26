@@ -7,15 +7,33 @@ import { cpSync, existsSync, mkdirSync, readFileSync, rmSync } from 'fs';
 import { join } from 'path';
 
 /**
- * Get ESLint instance with proper configuration
+ * Cached ESLint instances for better performance
  */
-const getESLint = (options: { fix?: boolean } = {}): ESLint => {
-  return new ESLint({
-    overrideConfigFile: join(process.cwd(), 'eslint.config.js'),
-    cache: false, // Disable cache to ensure fresh configuration
-    fix: options.fix, // Enable autofix when needed
-    ignore: false, // Disable ignore to check test fixtures
-  });
+const eslintInstances = new Map<boolean, ESLint>();
+
+/**
+ * Get or create ESLint instance for specific fix mode
+ */
+const getESLintInstance = (fix: boolean): ESLint => {
+  if (!eslintInstances.has(fix)) {
+    eslintInstances.set(
+      fix,
+      new ESLint({
+        overrideConfigFile: join(process.cwd(), 'eslint.config.js'),
+        cache: true, // Disable cache to ensure fresh configuration
+        fix, // Set fix mode for this instance
+        ignore: false, // Disable ignore to check test fixtures
+      }),
+    );
+  }
+
+  const instance = eslintInstances.get(fix);
+
+  if (!instance) {
+    throw new Error(`ESLint instance not found for fix mode: ${fix}`);
+  }
+
+  return instance;
 };
 
 /**
@@ -111,8 +129,7 @@ export const useEslintFixtures = () => {
       throw new Error(`File not found: ${fullPath}`);
     }
 
-    const eslint = getESLint({ fix: options.fix });
-
+    const eslint = getESLintInstance(options.fix || false);
     const results = await eslint.lintFiles([fullPath]);
     const messages = results[0]?.messages || [];
 
