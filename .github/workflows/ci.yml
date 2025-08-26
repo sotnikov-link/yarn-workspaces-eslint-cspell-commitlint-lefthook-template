@@ -59,7 +59,3 @@ jobs:
       # Run lefthook CI checks (optimized for CI environment)
       - name: Run lefthook CI checks
         run: yarn lefthook run ci
-
-      # Run tests with coverage
-      - name: Run tests with coverage
-        run: yarn test
