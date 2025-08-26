@@ -1677,10 +1677,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/js@npm:9.7.0, @eslint/js@npm:^9.6.0":
+"@eslint/js@npm:9.7.0":
   version: 9.7.0
   resolution: "@eslint/js@npm:9.7.0"
   checksum: 10c0/73fc10666f6f4aed6f58e407e09f42ceb0d42fa60c52701c64ea9f59a81a6a8ad5caecdfd423d03088481515fe7ec17eb461acb4ef1ad70b649b6eae465b3164
+  languageName: node
+  linkType: hard
+
+"@eslint/js@npm:^9.6.0":
+  version: 9.34.0
+  resolution: "@eslint/js@npm:9.34.0"
+  checksum: 10c0/53f1bfd2a374683d9382a6850354555f6e89a88416c34a5d34e9fbbaf717e97c2b06300e8f93e5eddba8bda8951ccab7f93a680e56ded1a3d21d526019e69bab
   languageName: node
   linkType: hard
 
@@ -5842,15 +5849,6 @@ __metadata:
   peerDependencies:
     eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
   checksum: 10c0/60717e32c9948e2b4ddc53dac7c4b62c68fc7129c3249079191c941c08ebe7d1f4793d65182922d19427c2a6634e05231a7b74ceee34169afdfd0e43d4a43d26
-  languageName: node
-  linkType: hard
-
-"eslint-plugin-regex@npm:^1.10.0":
-  version: 1.10.0
-  resolution: "eslint-plugin-regex@npm:1.10.0"
-  peerDependencies:
-    eslint: ">=4.0.0"
-  checksum: 10c0/83d424d9c0d34845e40983d28ffed77405c386272c6d9e5c6ea8eda67e643d2243837bae29c5c35af6dbfac1eba58d7e477a018272034eeb1341ab172d641827
   languageName: node
   linkType: hard
 
@@ -11223,7 +11221,6 @@ __metadata:
     eslint-config-canonical: "npm:^43.0.13"
     eslint-plugin-only-warn: "npm:^1.1.0"
     eslint-plugin-react-refresh: "npm:^0.4.7"
-    eslint-plugin-regex: "npm:^1.10.0"
     eslint-plugin-simple-import-sort: "npm:^12.1.0"
     eslint-plugin-unused-imports: "npm:^4.0.0"
     lefthook: "npm:^1.6.18"

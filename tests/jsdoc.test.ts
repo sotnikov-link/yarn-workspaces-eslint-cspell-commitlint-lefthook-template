@@ -16,7 +16,7 @@ describe('JSDoc rules', () => {
     it('should fix single-line JSDoc', async () => {
       // 1. Check that ESLint finds the error
       const lintResult = await fixtures.lintFile('jsdoc/bad-single-line.js', {
-        ruleId: 'regex/invalid-jsdoc',
+        ruleId: 'custom/jsdoc-multiline',
       });
 
       expect(lintResult.errors).toHaveLength(1);
@@ -47,7 +47,7 @@ describe('JSDoc rules', () => {
       const lintResult = await fixtures.lintFile(
         'jsdoc/bad-no-empty-line-before.js',
         {
-          ruleId: 'regex/invalid-jsdoc',
+          ruleId: 'custom/jsdoc-empty-line-before',
         },
       );
 
@@ -81,7 +81,7 @@ describe('JSDoc rules', () => {
       const lintResult = await fixtures.lintFile(
         'jsdoc/bad-empty-lines-at-start.js',
         {
-          ruleId: 'regex/invalid-jsdoc',
+          ruleId: 'custom/jsdoc-no-empty-start',
         },
       );
 
@@ -116,7 +116,7 @@ describe('JSDoc rules', () => {
       const lintResult = await fixtures.lintFile(
         'jsdoc/bad-no-space-after-star.js',
         {
-          ruleId: 'regex/invalid-jsdoc',
+          ruleId: 'custom/jsdoc-space-after-asterisk',
         },
       );
 
@@ -151,7 +151,7 @@ describe('JSDoc rules', () => {
       const lintResult = await fixtures.lintFile(
         'jsdoc/bad-multiple-empty-lines.js',
         {
-          ruleId: 'regex/invalid-jsdoc',
+          ruleId: 'custom/jsdoc-multiple-empty-lines',
         },
       );
 
@@ -190,7 +190,7 @@ describe('JSDoc rules', () => {
       const lintResult = await fixtures.lintFile(
         'jsdoc/bad-no-empty-line-after.js',
         {
-          ruleId: 'regex/invalid-jsdoc',
+          ruleId: 'custom/jsdoc-empty-line-after',
         },
       );
 
@@ -225,7 +225,7 @@ describe('JSDoc rules', () => {
       const lintResult = await fixtures.lintFile(
         'jsdoc/bad-empty-line-before-end.js',
         {
-          ruleId: 'regex/invalid-jsdoc',
+          ruleId: 'custom/jsdoc-no-empty-end',
         },
       );
 
@@ -257,7 +257,7 @@ describe('JSDoc rules', () => {
   describe('Correct JSDoc', () => {
     it('should not report errors for correct JSDoc', async () => {
       const lintResult = await fixtures.lintFile('jsdoc/good-correct.js', {
-        ruleId: 'regex/invalid-jsdoc',
+        ruleId: 'custom/jsdoc-multiline',
       });
 
       expect(lintResult.errors).toHaveLength(0);

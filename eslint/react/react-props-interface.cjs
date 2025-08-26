@@ -24,11 +24,12 @@ module.exports = {
             node,
             message: 'Use interface for React Component Props',
             fix(fixer) {
-              // Replace 'type' with 'interface' and remove '='
               const sourceCode = context.getSourceCode();
               const typeKeyword = sourceCode.getFirstToken(node);
-              const equalsToken = sourceCode.getTokenAfter(typeKeyword);
+              const typeName = sourceCode.getTokenAfter(typeKeyword);
+              const equalsToken = sourceCode.getTokenAfter(typeName);
 
+              // Replace 'type' with 'interface' and remove '=' and ';'
               return [
                 fixer.replaceText(typeKeyword, 'interface'),
                 fixer.remove(equalsToken),
