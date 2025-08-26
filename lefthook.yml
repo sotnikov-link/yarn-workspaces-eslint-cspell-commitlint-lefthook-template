@@ -56,3 +56,25 @@ ci:
     cspell:
       exclude: *yarn-lock
       run: yarn check-cspell-all
+    test:
+      run: yarn test
+    build-trpc-service:
+      tags: backend build
+      run: yarn workspace @some-name/trpc-service build
+    build-vite-mantine:
+      tags: frontend build
+      run: yarn workspace @some-name/vite-mantine-vanilla-extract build
+
+# Development testing hooks
+test-dev:
+  parallel: false
+  commands:
+    start-trpc-service:
+      tags: backend dev
+      run: yarn workspace @some-name/trpc-service start
+    dev-vite-mantine:
+      tags: frontend dev
+      run: yarn workspace @some-name/vite-mantine-vanilla-extract dev
+    preview-vite-mantine:
+      tags: frontend preview
+      run: yarn workspace @some-name/vite-mantine-vanilla-extract preview

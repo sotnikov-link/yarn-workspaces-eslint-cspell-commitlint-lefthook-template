@@ -15,7 +15,10 @@
     "pkgroll",
     "commitlint",
     "eslintcache",
-    "vitest"
+    "vitest",
+    "trpc",
+    "vite",
+    "typesafe"
   ],
   "useGitignore": true
 }
