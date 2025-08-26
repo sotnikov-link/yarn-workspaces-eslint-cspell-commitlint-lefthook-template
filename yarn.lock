@@ -2806,9 +2806,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@some-name/vite-mantine-vanilla-extract@workspace:packages/vite-mantine-ve":
+"@some-name/vite-mantine@workspace:packages/vite-mantine":
   version: 0.0.0-use.local
-  resolution: "@some-name/vite-mantine-vanilla-extract@workspace:packages/vite-mantine-ve"
+  resolution: "@some-name/vite-mantine@workspace:packages/vite-mantine"
   dependencies:
     "@mantine/core": "npm:7.11.2"
     "@mantine/hooks": "npm:7.11.2"

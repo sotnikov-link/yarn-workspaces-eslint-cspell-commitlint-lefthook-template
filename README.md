@@ -49,11 +49,11 @@ yarn test
 
 # Build projects
 yarn workspace @some-name/trpc-service build
-yarn workspace @some-name/vite-mantine-vanilla-extract build
+yarn workspace @some-name/vite-mantine build
 
 # Run in development mode
 yarn workspace @some-name/trpc-service start
-yarn workspace @some-name/vite-mantine-vanilla-extract dev
+yarn workspace @some-name/vite-mantine dev
 ```
 
 ## 🚀 Features
@@ -86,8 +86,7 @@ yarn workspace @some-name/vite-mantine-vanilla-extract dev
 ### Template Projects
 
 - **`@some-name/trpc-service`** — tRPC backend service
-- **`@some-name/vite-mantine-vanilla-extract`** — React frontend with Vite +
-  Mantine
+- **`@some-name/vite-mantine`** — React frontend with Vite + Mantine
 - **`@some-name/tsconfig`** — shared TypeScript configuration
 
 ## 🛠️ Custom ESLint Rules
@@ -167,7 +166,7 @@ Rules for correct JSDoc comment formatting.
 │   └── react/            # React-specific rules
 ├── packages/              # Template projects
 │   ├── trpc-service/     # tRPC backend
-│   ├── vite-mantine-ve/  # React frontend
+│   ├── vite-mantine/     # React frontend
 │   └── tsconfig/         # Shared TS config
 ├── tests/                # ESLint rule tests
 ├── lefthook.yml          # Git hooks configuration

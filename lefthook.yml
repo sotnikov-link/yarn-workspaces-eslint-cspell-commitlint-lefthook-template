@@ -63,7 +63,7 @@ ci:
       run: yarn workspace @some-name/trpc-service build
     build-vite-mantine:
       tags: frontend build
-      run: yarn workspace @some-name/vite-mantine-vanilla-extract build
+      run: yarn workspace @some-name/vite-mantine build
 
 # Development testing hooks
 test-dev:
@@ -74,7 +74,7 @@ test-dev:
       run: yarn workspace @some-name/trpc-service start
     dev-vite-mantine:
       tags: frontend dev
-      run: yarn workspace @some-name/vite-mantine-vanilla-extract dev
+      run: yarn workspace @some-name/vite-mantine dev
     preview-vite-mantine:
       tags: frontend preview
-      run: yarn workspace @some-name/vite-mantine-vanilla-extract preview
+      run: yarn workspace @some-name/vite-mantine preview
