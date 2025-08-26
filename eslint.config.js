@@ -15,7 +15,7 @@ import unusedImports from 'eslint-plugin-unused-imports';
 import tsLint from 'typescript-eslint';
 import emptyLinesJs from './eslint/empty-lines/javascript.cjs';
 import emptyLinesTs from './eslint/empty-lines/typescript.cjs';
-import formatJsdoc from './eslint/jsdoc.cjs';
+import jsdocRules from './eslint/jsdoc/jsdoc-rules.cjs';
 import reactRules from './eslint/react/rules.cjs';
 
 /**
@@ -37,7 +37,7 @@ const config = tsLint.config(
   ...auto,
   emptyLinesJs,
   emptyLinesTs,
-  formatJsdoc,
+  jsdocRules,
 
   reactRules,
   eslintPluginPrettierRecommended,
@@ -98,7 +98,8 @@ const config = tsLint.config(
     rules: {
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
-      'unused-imports/no-unused-imports': 'error',
+      '@typescript-eslint/consistent-type-definitions': ['warn', 'interface'],
+      'unused-imports/no-unused-imports': 'warn',
       'unused-imports/no-unused-vars': [
         'warn',
         {

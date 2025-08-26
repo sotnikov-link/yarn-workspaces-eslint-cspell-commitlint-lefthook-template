@@ -47,7 +47,7 @@ describe('React rules', () => {
   });
 
   describe('Props type rule', () => {
-    it('should report error for type instead of interface', async () => {
+    it('should report error for type instead of interface and fix it', async () => {
       // 1. Check that ESLint finds the error
       const lintResult = await fixtures.lintFile('react/bad-props-type.tsx', {
         ruleId: 'custom/react-props-interface',
@@ -59,8 +59,18 @@ describe('React rules', () => {
         'Use interface for React Component Props',
       );
 
-      // Note: This rule doesn't have autofix according to TODO.md
-      // So we only test that it reports the error
+      // 2. Apply autofix
+      const fixResult = await fixtures.lintFile('react/bad-props-type.tsx', {
+        fix: true,
+      });
+
+      // 3. Check the result
+      expect(fixResult.output).toMatchInlineSnapshot(`
+        "export interface InputProps {
+          type: number; // Example Content
+        }
+        "
+      `);
     });
 
     it('should not report error for types not ending with Props', async () => {

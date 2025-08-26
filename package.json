@@ -34,7 +34,6 @@
     "eslint-config-canonical": "^43.0.13",
     "eslint-plugin-only-warn": "^1.1.0",
     "eslint-plugin-react-refresh": "^0.4.7",
-    "eslint-plugin-regex": "^1.10.0",
     "eslint-plugin-simple-import-sort": "^12.1.0",
     "eslint-plugin-unused-imports": "^4.0.0",
     "lefthook": "^1.6.18",
