@@ -91,4 +91,4 @@ describe('React rules', () => {
       expect(lintResult.errors).toHaveLength(0);
     });
   });
-}, 10_000);
+});
