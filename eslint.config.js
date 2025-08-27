@@ -1,5 +1,6 @@
 // @ts-nocheck
 import 'eslint-plugin-only-warn';
+import stylistic from '@stylistic/eslint-plugin';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import auto from 'eslint-config-canonical/configurations/auto.js';
 import { recommended as canonical } from 'eslint-config-canonical/configurations/canonical.js';
@@ -95,6 +96,7 @@ const config = tsLint.config(
     plugins: {
       'unused-imports': unusedImports,
       '@typescript-eslint': tsPlugin,
+      '@stylistic': stylistic,
     },
 
     rules: {
@@ -111,6 +113,13 @@ const config = tsLint.config(
           argsIgnorePattern: '^_',
         },
       ],
+
+      // Replace TypeScript style rules with @stylistic equivalents
+      '@typescript-eslint/object-curly-spacing': 'off',
+      '@typescript-eslint/type-annotation-spacing': 'off',
+      // Disable rules that conflict with prettier
+      '@stylistic/object-curly-spacing': 'off',
+      '@stylistic/type-annotation-spacing': 'error',
     },
   },
 
