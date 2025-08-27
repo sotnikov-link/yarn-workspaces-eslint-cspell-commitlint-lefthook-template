@@ -19,12 +19,19 @@ const jsdocRules = {
   plugins: {
     custom: {
       rules: {
+        // @ts-expect-error
         'jsdoc-multiline': jsdocMultiline,
+        // @ts-expect-error
         'jsdoc-empty-line-before': jsdocEmptyLineBefore,
+        // @ts-expect-error
         'jsdoc-no-empty-start': jsdocNoEmptyStart,
+        // @ts-expect-error
         'jsdoc-space-after-asterisk': jsdocSpaceAfterAsterisk,
+        // @ts-expect-error
         'jsdoc-multiple-empty-lines': jsdocMultipleEmptyLines,
+        // @ts-expect-error
         'jsdoc-empty-line-after': jsdocEmptyLineAfter,
+        // @ts-expect-error
         'jsdoc-no-empty-end': jsdocNoEmptyEnd,
       },
     },

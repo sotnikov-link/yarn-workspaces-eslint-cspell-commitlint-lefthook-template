@@ -9,6 +9,7 @@ packages/*/dist/
 # cspell:disable-next-line
 /.eslintcache
 /.cspellcache
+*.tsbuildinfo
 
 ### Yarn
 

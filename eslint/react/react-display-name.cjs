@@ -12,9 +12,9 @@ module.exports = {
     },
     schema: [],
   },
-  create(context) {
+  create(/** @type {import('eslint').Rule.RuleContext} */ context) {
     return {
-      AssignmentExpression(node) {
+      AssignmentExpression(/** @type {any} */ node) {
         // Check if this is a displayName assignment
         if (
           node.left.type === 'MemberExpression' &&
@@ -37,7 +37,7 @@ module.exports = {
               context.report({
                 node,
                 message: 'Use variable name for display name',
-                fix(fixer) {
+                fix(/** @type {import('eslint').Rule.RuleFixer} */ fixer) {
                   return fixer.replaceText(
                     displayNameValue,
                     `'${componentName}'`,

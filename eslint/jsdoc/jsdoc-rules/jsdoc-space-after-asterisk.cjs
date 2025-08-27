@@ -5,7 +5,10 @@
  *  Good example
  *  /
  */
-const checkJsdocSpaceAfterAsterisk = (context, comment) => {
+const checkJsdocSpaceAfterAsterisk = (
+  /** @type {import('eslint').Rule.RuleContext} */ context,
+  /** @type {any} */ comment,
+) => {
   const lines = comment.value.split('\n');
 
   let offset = 4; // Start after /**\n
@@ -24,7 +27,7 @@ const checkJsdocSpaceAfterAsterisk = (context, comment) => {
       context.report({
         node: comment,
         message: 'JSDoc line contains space after asterisk',
-        fix(fixer) {
+        fix(/** @type {import('eslint').Rule.RuleFixer} */ fixer) {
           const starMatch = currentLine.match(/^\s*\*/u);
 
           if (starMatch) {
@@ -55,7 +58,7 @@ module.exports = {
     },
     schema: [],
   },
-  create(context) {
+  create(/** @type {import('eslint').Rule.RuleContext} */ context) {
     const sourceCode = context.getSourceCode();
 
     return {

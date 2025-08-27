@@ -16,7 +16,8 @@
     "check-prettier": "prettier --check",
     "check-prettier-all": "yarn check-prettier .",
     "check-cspell": "cspell --quiet --cache",
-    "check-cspell-all": "yarn check-cspell ."
+    "check-cspell-all": "yarn check-cspell .",
+    "check-types-all": "tsc --noEmit && tsc --noEmit --project packages/trpc-service/tsconfig.json && tsc --noEmit --project packages/vite-mantine/tsconfig.json"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",

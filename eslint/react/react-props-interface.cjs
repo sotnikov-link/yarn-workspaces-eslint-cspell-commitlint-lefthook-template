@@ -12,9 +12,9 @@ module.exports = {
     },
     schema: [],
   },
-  create(context) {
+  create(/** @type {import('eslint').Rule.RuleContext} */ context) {
     return {
-      TSTypeAliasDeclaration(node) {
+      TSTypeAliasDeclaration(/** @type {any} */ node) {
         // Check if the type name ends with 'Props'
         if (
           node.id.name.endsWith('Props') && // Check if it's an object type
@@ -23,17 +23,23 @@ module.exports = {
           context.report({
             node,
             message: 'Use interface for React Component Props',
-            fix(fixer) {
+            fix(/** @type {import('eslint').Rule.RuleFixer} */ fixer) {
               const sourceCode = context.getSourceCode();
               const typeKeyword = sourceCode.getFirstToken(node);
+              // @ts-expect-error
               const typeName = sourceCode.getTokenAfter(typeKeyword);
+              // @ts-expect-error
               const equalsToken = sourceCode.getTokenAfter(typeName);
 
               // Replace 'type' with 'interface' and remove '=' and ';'
-              return [
-                fixer.replaceText(typeKeyword, 'interface'),
-                fixer.remove(equalsToken),
-              ];
+              if (typeKeyword && typeName && equalsToken) {
+                return [
+                  fixer.replaceText(typeKeyword, 'interface'),
+                  fixer.remove(equalsToken),
+                ];
+              }
+
+              return null;
             },
           });
         }

@@ -12,6 +12,7 @@ const typescript = {
   files: ['**/*.{ts,tsx}'],
 
   plugins: {
+    // @ts-expect-error
     '@typescript-eslint': require('@typescript-eslint/eslint-plugin'),
   },
 

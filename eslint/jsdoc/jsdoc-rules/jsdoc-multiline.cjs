@@ -3,7 +3,10 @@
  * JSDoc should be multi-line (not single-line)
  * Example: / ** Bad example * /
  */
-const checkJsdocMultiline = (context, comment) => {
+const checkJsdocMultiline = (
+  /** @type {import('eslint').Rule.RuleContext} */ context,
+  /** @type {any} */ comment,
+) => {
   const sourceCode = context.getSourceCode();
   const text = sourceCode.getText(comment);
 
@@ -12,7 +15,7 @@ const checkJsdocMultiline = (context, comment) => {
     context.report({
       node: comment,
       message: 'JSDoc is always a block comment',
-      fix(fixer) {
+      fix(/** @type {import('eslint').Rule.RuleFixer} */ fixer) {
         // Extract content between /** and */
         const content = text.slice(3, -2).trim();
         // Reconstruct as a multi-line block comment
@@ -35,7 +38,7 @@ module.exports = {
     },
     schema: [],
   },
-  create(context) {
+  create(/** @type {import('eslint').Rule.RuleContext} */ context) {
     const sourceCode = context.getSourceCode();
 
     return {

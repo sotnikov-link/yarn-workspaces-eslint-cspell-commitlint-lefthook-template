@@ -9,7 +9,9 @@ const displayNameCustom = {
   plugins: {
     custom: {
       rules: {
+        // @ts-expect-error
         'react-display-name': displayNameRule,
+        // @ts-expect-error
         'react-props-interface': reactPropsRule,
       },
     },

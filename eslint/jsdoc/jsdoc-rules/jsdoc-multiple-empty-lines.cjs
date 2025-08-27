@@ -7,9 +7,13 @@
  *  Another line
  *  /
  */
-const normalize = (line) => line.replace(/^\s*\*\s?/u, '').trim();
+const normalize = (/** @type {string} */ line) =>
+  line.replace(/^\s*\*\s?/u, '').trim();
 
-const checkJsdocMultipleEmptyLines = (context, comment) => {
+const checkJsdocMultipleEmptyLines = (
+  /** @type {import('eslint').Rule.RuleContext} */ context,
+  /** @type {any} */ comment,
+) => {
   const lines = comment.value.split('\n');
 
   let offset = comment.range[0] + 4;
@@ -26,7 +30,7 @@ const checkJsdocMultipleEmptyLines = (context, comment) => {
       context.report({
         node: comment,
         message: 'JSDoc can contains only one empty line but many times',
-        fix(fixer) {
+        fix(/** @type {import('eslint').Rule.RuleFixer} */ fixer) {
           const endOfLine = currentOffset + currentLineLength;
 
           return fixer.removeRange([endOfLine, endOfLine + nextLineLength + 1]);
@@ -51,7 +55,7 @@ module.exports = {
     },
     schema: [],
   },
-  create(context) {
+  create(/** @type {import('eslint').Rule.RuleContext} */ context) {
     const sourceCode = context.getSourceCode();
 
     return {

@@ -6,9 +6,13 @@
  *  Bad example
  *  /
  */
-const normalize = (line) => line.replace(/^\s*\*\s?/u, '').trim();
+const normalize = (/** @type {string} */ line) =>
+  line.replace(/^\s*\*\s?/u, '').trim();
 
-const checkJsdocNoEmptyStart = (context, comment) => {
+const checkJsdocNoEmptyStart = (
+  /** @type {import('eslint').Rule.RuleContext} */ context,
+  /** @type {any} */ comment,
+) => {
   const lines = comment.value.split('\n');
   const contentLines = lines.slice(1, -1);
 
@@ -25,7 +29,7 @@ const checkJsdocNoEmptyStart = (context, comment) => {
     context.report({
       node: comment,
       message: 'JSDoc starts without empty line',
-      fix(fixer) {
+      fix(/** @type {import('eslint').Rule.RuleFixer} */ fixer) {
         // Find start range of the first empty line content
         const startOffset = lines.slice(0, 1).join('\n').length + 1; // After /**\n
         const start = comment.range[0] + 3 + startOffset;
@@ -54,7 +58,7 @@ module.exports = {
     },
     schema: [],
   },
-  create(context) {
+  create(/** @type {import('eslint').Rule.RuleContext} */ context) {
     const sourceCode = context.getSourceCode();
 
     return {

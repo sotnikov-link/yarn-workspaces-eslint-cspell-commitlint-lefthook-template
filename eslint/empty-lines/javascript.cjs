@@ -10,6 +10,7 @@ const javascript = {
   files: ['**/*.{js,cjs,mjs}'],
 
   plugins: {
+    // @ts-expect-error
     react: require('eslint-plugin-react'),
   },
 

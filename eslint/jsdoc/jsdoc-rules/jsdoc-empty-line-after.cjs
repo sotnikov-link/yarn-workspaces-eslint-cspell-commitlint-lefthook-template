@@ -7,12 +7,16 @@
  *
  * function example() {}
  */
-const checkJsdocEmptyLineAfter = (context, comment) => {
+const checkJsdocEmptyLineAfter = (
+  /** @type {import('eslint').Rule.RuleContext} */ context,
+  /** @type {any} */ comment,
+) => {
   const sourceCode = context.getSourceCode();
   const nextToken = sourceCode.getTokenAfter(comment);
 
   if (
     nextToken &&
+    // @ts-expect-error
     nextToken.type !== 'Block' && // don't add lines between comments
     // Check for more than one newline
     nextToken.loc.start.line - comment.loc.end.line > 1
@@ -20,7 +24,7 @@ const checkJsdocEmptyLineAfter = (context, comment) => {
     context.report({
       node: comment,
       message: 'JSDoc without empty line after',
-      fix(fixer) {
+      fix(/** @type {import('eslint').Rule.RuleFixer} */ fixer) {
         // Replace the range between the comment and the next token with a single newline
         return fixer.replaceTextRange(
           [comment.range[1], nextToken.range[0]],
@@ -42,7 +46,7 @@ module.exports = {
     },
     schema: [],
   },
-  create(context) {
+  create(/** @type {import('eslint').Rule.RuleContext} */ context) {
     const sourceCode = context.getSourceCode();
 
     return {

@@ -6,9 +6,13 @@
  *
  *  /
  */
-const normalize = (line) => line.replace(/^\s*\*\s?/u, '').trim();
+const normalize = (/** @type {string} */ line) =>
+  line.replace(/^\s*\*\s?/u, '').trim();
 
-const checkJsdocNoEmptyEnd = (context, comment) => {
+const checkJsdocNoEmptyEnd = (
+  /** @type {import('eslint').Rule.RuleContext} */ context,
+  /** @type {any} */ comment,
+) => {
   const lines = comment.value.split('\n');
   const contentLines = lines.slice(1, -1);
 
@@ -27,7 +31,7 @@ const checkJsdocNoEmptyEnd = (context, comment) => {
     context.report({
       node: comment,
       message: 'JSDoc ends without empty line',
-      fix(fixer) {
+      fix(/** @type {import('eslint').Rule.RuleFixer} */ fixer) {
         // calculate the range of the trailing empty lines and remove them
         const startOffset = lines
           .slice(0, lastContentIndex + 2)
@@ -53,7 +57,7 @@ module.exports = {
     },
     schema: [],
   },
-  create(context) {
+  create(/** @type {import('eslint').Rule.RuleContext} */ context) {
     const sourceCode = context.getSourceCode();
 
     return {

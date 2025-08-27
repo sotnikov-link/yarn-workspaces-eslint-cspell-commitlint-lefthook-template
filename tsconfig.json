@@ -1,3 +1,4 @@
 {
-  "extends": "@some-name/tsconfig"
+  "extends": "@some-name/tsconfig",
+  "exclude": ["node_modules/**", "packages/**", "coverage/**"]
 }

@@ -6,7 +6,10 @@
  *  Good example
  *  /
  */
-const checkJsdocEmptyLineBefore = (context, comment) => {
+const checkJsdocEmptyLineBefore = (
+  /** @type {import('eslint').Rule.RuleContext} */ context,
+  /** @type {any} */ comment,
+) => {
   const sourceCode = context.getSourceCode();
   const previousToken = sourceCode.getTokenBefore(comment);
 
@@ -17,7 +20,8 @@ const checkJsdocEmptyLineBefore = (context, comment) => {
     context.report({
       node: comment,
       message: 'JSDoc with empty line before',
-      fix: (fixer) => fixer.insertTextBefore(comment, '\n'),
+      fix: (/** @type {import('eslint').Rule.RuleFixer} */ fixer) =>
+        fixer.insertTextBefore(comment, '\n'),
     });
   }
 };
@@ -33,7 +37,7 @@ module.exports = {
     },
     schema: [],
   },
-  create(context) {
+  create(/** @type {import('eslint').Rule.RuleContext} */ context) {
     const sourceCode = context.getSourceCode();
 
     return {

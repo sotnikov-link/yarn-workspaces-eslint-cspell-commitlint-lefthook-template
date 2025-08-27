@@ -56,6 +56,8 @@ ci:
     cspell:
       exclude: *yarn-lock
       run: yarn check-cspell-all
+    types:
+      run: yarn check-types-all
     test:
       run: yarn test
     build:
