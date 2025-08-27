@@ -14,8 +14,6 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import unusedImports from 'eslint-plugin-unused-imports';
 import tsLint from 'typescript-eslint';
-import emptyLinesJs from './eslint/empty-lines/javascript.cjs';
-import emptyLinesTs from './eslint/empty-lines/typescript.cjs';
 import jsdocRules from './eslint/jsdoc/jsdoc-rules.cjs';
 import reactRules from './eslint/react/rules.cjs';
 
@@ -38,8 +36,7 @@ const config = tsLint.config(
   },
 
   ...auto,
-  emptyLinesJs,
-  emptyLinesTs,
+
   jsdocRules,
 
   reactRules,
@@ -114,12 +111,102 @@ const config = tsLint.config(
         },
       ],
 
+      '@stylistic/jsx-newline': ['warn', { prevent: true }],
+
       // Replace TypeScript style rules with @stylistic equivalents
       '@typescript-eslint/object-curly-spacing': 'off',
       '@typescript-eslint/type-annotation-spacing': 'off',
       // Disable rules that conflict with prettier
       '@stylistic/object-curly-spacing': 'off',
       '@stylistic/type-annotation-spacing': 'error',
+
+      // Replace custom empty-lines rules with @stylistic equivalents
+      '@stylistic/lines-between-class-members': ['warn', 'always'], // canonical@45 uses it too
+
+      '@stylistic/padding-line-between-statements': [
+        'warn',
+
+        // Separated Import Group
+        { blankLine: 'always', prev: '*', next: 'import' },
+        { blankLine: 'always', prev: 'import', next: '*' },
+        { blankLine: 'never', prev: 'import', next: 'import' },
+
+        // Separated Export Group
+        { blankLine: 'always', prev: '*', next: 'export' },
+        { blankLine: 'always', prev: 'export', next: '*' },
+        { blankLine: 'any', prev: 'export', next: 'export' },
+
+        // Separated Singleline Variable Group
+        { blankLine: 'always', prev: '*', next: 'singleline-var' },
+        { blankLine: 'always', prev: 'singleline-var', next: '*' },
+        { blankLine: 'any', prev: 'singleline-var', next: 'singleline-var' },
+        { blankLine: 'always', prev: '*', next: 'singleline-let' },
+        { blankLine: 'always', prev: 'singleline-let', next: '*' },
+        { blankLine: 'any', prev: 'singleline-let', next: 'singleline-let' },
+        { blankLine: 'always', prev: '*', next: 'singleline-const' },
+        { blankLine: 'always', prev: 'singleline-const', next: '*' },
+        {
+          blankLine: 'any',
+          prev: 'singleline-const',
+          next: 'singleline-const',
+        },
+
+        // Always Before
+        {
+          blankLine: 'always',
+          prev: '*',
+          next: [
+            'break',
+            'throw',
+            'return',
+            'directive',
+            'multiline-expression',
+            // 'multiline-block-like', // enough block-like?
+
+            // equals to 'try', 'class', 'switch', 'function'
+            'block-like',
+
+            // switch-case
+            'case',
+            'default',
+
+            // multiline variable group
+            'multiline-var',
+            'multiline-let',
+            'multiline-const',
+
+            // typescript
+            'type',
+            'interface',
+          ],
+        },
+
+        // Always After
+        {
+          blankLine: 'always',
+          prev: [
+            'directive',
+            'block-like',
+            'multiline-var',
+            'multiline-let',
+            'multiline-const',
+            'multiline-expression',
+            // 'multiline-block-like', // enough block-like?
+
+            // typescript
+            'type',
+            'interface',
+          ],
+          next: '*',
+        },
+
+        // https://github.com/gajus/eslint-config-canonical/blob/9553ce3c70d0ca51758af6b764f9f38932c1db7b/configurations/typescript-compatibility.js#L86
+        {
+          blankLine: 'always',
+          next: '*',
+          prev: 'multiline-block-like',
+        },
+      ],
     },
   },
 
