@@ -1,5 +1,7 @@
 // @ts-nocheck
 import 'eslint-plugin-only-warn';
+import markdown from '@eslint/markdown';
+import stylistic from '@stylistic/eslint-plugin';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import auto from 'eslint-config-canonical/configurations/auto.js';
 import { recommended as canonical } from 'eslint-config-canonical/configurations/canonical.js';
@@ -13,8 +15,6 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import unusedImports from 'eslint-plugin-unused-imports';
 import tsLint from 'typescript-eslint';
-import emptyLinesJs from './eslint/empty-lines/javascript.cjs';
-import emptyLinesTs from './eslint/empty-lines/typescript.cjs';
 import jsdocRules from './eslint/jsdoc/jsdoc-rules.cjs';
 import reactRules from './eslint/react/rules.cjs';
 
@@ -37,8 +37,7 @@ const config = tsLint.config(
   },
 
   ...auto,
-  emptyLinesJs,
-  emptyLinesTs,
+
   jsdocRules,
 
   reactRules,
@@ -91,10 +90,75 @@ const config = tsLint.config(
     },
   },
 
+  // Unified Markdown configuration with processor and code block rules
+  {
+    files: ['**/*.md'],
+    plugins: {
+      markdown,
+    },
+    // cspell:ignore commonmark
+    language: 'markdown/commonmark',
+    languageOptions: {
+      frontmatter: false,
+    },
+    rules: {
+      'prettier/prettier': ['warn', {}, { usePrettierrc: true }],
+      'unicorn/filename-case': 'off', // README.md is a standard filename
+    },
+  },
+
+  // Markdown processor configuration for code blocks
+  {
+    files: ['**/*.md'],
+    plugins: {
+      markdown,
+    },
+    language: 'markdown/commonmark',
+    processor: 'markdown/markdown',
+    languageOptions: {
+      parserOptions: {
+        ecmaVersion: 2_020,
+        sourceType: 'module',
+      },
+    },
+  },
+
+  // Unified rules for JavaScript and TypeScript code blocks in Markdown
+  {
+    files: ['**/*.md/*.js', '**/*.md/*.ts', '**/*.md/*.tsx', '**/*.md/*.jsx'],
+    languageOptions: {
+      sourceType: 'module',
+      ecmaVersion: 2_020,
+      parserOptions: {
+        project: null, // Disable TypeScript project checking for Markdown code blocks
+      },
+    },
+    rules: {
+      'no-var': 'warn',
+      'no-unused-vars': 'warn',
+      'prefer-const': 'warn',
+    },
+  },
+
+  // Special configuration for README.md to disable filename case rule
+  {
+    files: [
+      'README.md',
+      '**/*.md/*.js',
+      '**/*.md/*.ts',
+      '**/*.md/*.tsx',
+      '**/*.md/*.jsx',
+    ],
+    rules: {
+      'unicorn/filename-case': 'off',
+    },
+  },
+
   {
     plugins: {
       'unused-imports': unusedImports,
       '@typescript-eslint': tsPlugin,
+      '@stylistic': stylistic,
     },
 
     rules: {
@@ -109,6 +173,103 @@ const config = tsLint.config(
           varsIgnorePattern: '^_',
           args: 'after-used',
           argsIgnorePattern: '^_',
+        },
+      ],
+
+      '@stylistic/jsx-newline': ['warn', { prevent: true }],
+
+      // Replace TypeScript style rules with @stylistic equivalents
+      '@typescript-eslint/object-curly-spacing': 'off',
+      '@typescript-eslint/type-annotation-spacing': 'off',
+      // Disable rules that conflict with prettier
+      '@stylistic/object-curly-spacing': 'off',
+      '@stylistic/type-annotation-spacing': 'error',
+
+      // Replace custom empty-lines rules with @stylistic equivalents
+      '@stylistic/lines-between-class-members': ['warn', 'always'], // canonical@45 uses it too
+
+      '@stylistic/padding-line-between-statements': [
+        'warn',
+
+        // Separated Import Group
+        { blankLine: 'always', prev: '*', next: 'import' },
+        { blankLine: 'always', prev: 'import', next: '*' },
+        { blankLine: 'never', prev: 'import', next: 'import' },
+
+        // Separated Export Group
+        { blankLine: 'always', prev: '*', next: 'export' },
+        { blankLine: 'always', prev: 'export', next: '*' },
+        { blankLine: 'any', prev: 'export', next: 'export' },
+
+        // Separated Singleline Variable Group
+        { blankLine: 'always', prev: '*', next: 'singleline-var' },
+        { blankLine: 'always', prev: 'singleline-var', next: '*' },
+        { blankLine: 'any', prev: 'singleline-var', next: 'singleline-var' },
+        { blankLine: 'always', prev: '*', next: 'singleline-let' },
+        { blankLine: 'always', prev: 'singleline-let', next: '*' },
+        { blankLine: 'any', prev: 'singleline-let', next: 'singleline-let' },
+        { blankLine: 'always', prev: '*', next: 'singleline-const' },
+        { blankLine: 'always', prev: 'singleline-const', next: '*' },
+        {
+          blankLine: 'any',
+          prev: 'singleline-const',
+          next: 'singleline-const',
+        },
+
+        // Always Before
+        {
+          blankLine: 'always',
+          prev: '*',
+          next: [
+            'break',
+            'throw',
+            'return',
+            'directive',
+            'multiline-expression',
+            // 'multiline-block-like', // enough block-like?
+
+            // equals to 'try', 'class', 'switch', 'function'
+            'block-like',
+
+            // switch-case
+            'case',
+            'default',
+
+            // multiline variable group
+            'multiline-var',
+            'multiline-let',
+            'multiline-const',
+
+            // typescript
+            'type',
+            'interface',
+          ],
+        },
+
+        // Always After
+        {
+          blankLine: 'always',
+          prev: [
+            'directive',
+            'block-like',
+            'multiline-var',
+            'multiline-let',
+            'multiline-const',
+            'multiline-expression',
+            // 'multiline-block-like', // enough block-like?
+
+            // typescript
+            'type',
+            'interface',
+          ],
+          next: '*',
+        },
+
+        // https://github.com/gajus/eslint-config-canonical/blob/9553ce3c70d0ca51758af6b764f9f38932c1db7b/configurations/typescript-compatibility.js#L86
+        {
+          blankLine: 'always',
+          next: '*',
+          prev: 'multiline-block-like',
         },
       ],
     },
