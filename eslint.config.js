@@ -1,5 +1,6 @@
 // @ts-nocheck
 import 'eslint-plugin-only-warn';
+import markdown from '@eslint/markdown';
 import stylistic from '@stylistic/eslint-plugin';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import auto from 'eslint-config-canonical/configurations/auto.js';
@@ -86,6 +87,70 @@ const config = tsLint.config(
       'spaced-comment': 'off',
       'yml/sort-keys': 'off',
       'yml/no-multiple-empty-lines': 'off', // enough prettier
+    },
+  },
+
+  // Unified Markdown configuration with processor and code block rules
+  {
+    files: ['**/*.md'],
+    plugins: {
+      markdown,
+    },
+    // cspell:ignore commonmark
+    language: 'markdown/commonmark',
+    languageOptions: {
+      frontmatter: false,
+    },
+    rules: {
+      'prettier/prettier': ['warn', {}, { usePrettierrc: true }],
+      'unicorn/filename-case': 'off', // README.md is a standard filename
+    },
+  },
+
+  // Markdown processor configuration for code blocks
+  {
+    files: ['**/*.md'],
+    plugins: {
+      markdown,
+    },
+    language: 'markdown/commonmark',
+    processor: 'markdown/markdown',
+    languageOptions: {
+      parserOptions: {
+        ecmaVersion: 2_020,
+        sourceType: 'module',
+      },
+    },
+  },
+
+  // Unified rules for JavaScript and TypeScript code blocks in Markdown
+  {
+    files: ['**/*.md/*.js', '**/*.md/*.ts', '**/*.md/*.tsx', '**/*.md/*.jsx'],
+    languageOptions: {
+      sourceType: 'module',
+      ecmaVersion: 2_020,
+      parserOptions: {
+        project: null, // Disable TypeScript project checking for Markdown code blocks
+      },
+    },
+    rules: {
+      'no-var': 'warn',
+      'no-unused-vars': 'warn',
+      'prefer-const': 'warn',
+    },
+  },
+
+  // Special configuration for README.md to disable filename case rule
+  {
+    files: [
+      'README.md',
+      '**/*.md/*.js',
+      '**/*.md/*.ts',
+      '**/*.md/*.tsx',
+      '**/*.md/*.jsx',
+    ],
+    rules: {
+      'unicorn/filename-case': 'off',
     },
   },
 
